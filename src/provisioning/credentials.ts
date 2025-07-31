@@ -29,13 +29,12 @@ export class Credentials extends Construct {
     super(scope, id);
 
     const { provider } = config;
-    const databricksAccountId =
-      config.databricksAccountId ?? provider.accountId ?? "unknown";
+    const accountId = config.databricksAccountId ?? provider.accountId ?? "";
     const credentialsName = config.credentialsName ?? this.node.path;
     const policyType = config.policyType ?? "managed";
 
     const crossAccountRole = new CrossAccountRole(this, "cross-account-role", {
-      externalId: databricksAccountId,
+      externalId: accountId,
       roleName: credentialsName.replace(/\//g, "-") + "-cross-account-role",
       policyType,
     });
