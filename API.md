@@ -99,8 +99,8 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdktf-databricks-constructs.Credentials.property.credentialsId">credentialsId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.credentialsName">credentialsName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdktf-databricks-constructs.Credentials.property.credentiasId">credentiasId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.databricksAccountId">databricksAccountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.iamRole">iamRole</a></code> | <code><a href="#cdktf-databricks-constructs.CrossAccountRole">CrossAccountRole</a></code> | *No description.* |
 
@@ -118,20 +118,20 @@ The tree node.
 
 ---
 
-##### `credentialsName`<sup>Required</sup> <a name="credentialsName" id="cdktf-databricks-constructs.Credentials.property.credentialsName"></a>
+##### `credentialsId`<sup>Required</sup> <a name="credentialsId" id="cdktf-databricks-constructs.Credentials.property.credentialsId"></a>
 
 ```typescript
-public readonly credentialsName: string;
+public readonly credentialsId: string;
 ```
 
 - *Type:* string
 
 ---
 
-##### `credentiasId`<sup>Required</sup> <a name="credentiasId" id="cdktf-databricks-constructs.Credentials.property.credentiasId"></a>
+##### `credentialsName`<sup>Required</sup> <a name="credentialsName" id="cdktf-databricks-constructs.Credentials.property.credentialsName"></a>
 
 ```typescript
-public readonly credentiasId: string;
+public readonly credentialsName: string;
 ```
 
 - *Type:* string

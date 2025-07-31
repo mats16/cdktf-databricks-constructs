@@ -92,6 +92,7 @@ export class RootBucket extends s3Bucket.S3Bucket {
       this,
       'bucket-policy',
       {
+        region: config.region,
         bucket: bucketName,
         policy: bucketPolicyDocument.json,
       },

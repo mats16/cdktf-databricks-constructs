@@ -1,0 +1,13 @@
+{
+  "language": "typescript",
+  "app": "npx ts-node main.ts",
+  "projectId": "databricks-constructs-dev",
+  "sendCrashReports": "false",
+  "terraformProviders": [
+    "databricks/databricks@~> 1.65.0",
+    "hashicorp/aws@~> 5.0",
+    "hashicorp/time@~> 0.13.0"
+  ],
+  "terraformModules": [],
+  "context": {}
+}

@@ -43,6 +43,10 @@ The library implements L2 constructs (higher-level abstractions) that wrap Datab
    - `UnityCatalogMetastore` - Sets up Unity Catalog with S3 backend
    - `UnityCatalogRole` - Creates IAM roles for data access
 
+### Design Tenets
+1. **Non-Destructive AWS Integration**: Databricks constructs never modify existing AWS resources. They only reference existing resources or transparently create new ones when required.
+2. **Transparent Resource Creation**: When necessary AWS resources (IAM Roles, S3 buckets, etc.) don't exist, constructs will create them automatically without explicit user intervention.
+
 ### Key Design Patterns
 - **Builder Pattern**: All constructs use configuration interfaces (e.g., `WorkspaceConfig`)
 - **Composition**: Constructs can be used independently or composed together

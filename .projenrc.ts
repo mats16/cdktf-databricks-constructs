@@ -38,6 +38,7 @@ const project = new cdktf.ConstructLibraryCdktf({
     'cdktf.out/**',
     '*.tfstate',
     '*.tfstate.backup',
+    '*.tfstate.lock.info',
   ],
 });
 

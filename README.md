@@ -7,6 +7,13 @@ Higher-level (L2+) constructs for [Databricks](https://www.databricks.com/) usin
 
 This library provides easy-to-use, opinionated constructs that simplify deploying and managing Databricks resources with best practices built-in.
 
+## Design Philosophy
+
+Our constructs follow two core principles:
+
+1. **🔗 Non-Destructive AWS Integration** - Never modify existing AWS resources, only reference them or create new ones when needed
+2. **✨ Transparent Resource Creation** - Automatically create required AWS resources (IAM roles, S3 buckets) without explicit user configuration
+
 ## Features
 
 - 🏗️ **High-level constructs** - Simplified APIs for common Databricks patterns
@@ -43,27 +50,83 @@ Add to your `pom.xml`:
 </dependency>
 ```
 
-## (TBD) Quick Start
+## Quick Start
+
+### Deployment with CDKTF
+
+1. **Prerequisites**
+   - AWS Account with appropriate permissions
+   - Databricks Account (for workspace creation)
+   - Node.js 18+ and npm/yarn installed
+   - CDKTF CLI installed: `npm install -g cdktf-cli`
+
+2. **Setup Environment Variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your credentials
+   export $(cat .env | xargs)
+   ```
+
+3. **Deploy Infrastructure**
+   ```bash
+   # Install dependencies
+   npm install
+
+   # Build the project
+   npm run build
+
+   # Initialize CDKTF (first time only)
+   cdktf init --local
+
+   # Deploy the stack
+   cdktf deploy
+   ```
+
+4. **Example Usage**
+   See `main.ts` for a complete example that creates:
+   - Databricks workspace with AWS backend
+   - Unity Catalog metastore
+   - IAM roles and S3 buckets
+
+### Using as a Library
 
 ```typescript
 import { App, TerraformStack } from 'cdktf';
+import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
-import { DatabricksWorkspace } from 'cdktf-databricks-constructs';
+import { Workspace, Credentials, Storage } from 'cdktf-databricks-constructs';
 
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
+    // Configure providers
+    new AwsProvider(this, 'aws', { region: 'us-east-1' });
     new DatabricksProvider(this, 'databricks', {
-      host: process.env.DATABRICKS_HOST,
-      token: process.env.DATABRICKS_TOKEN,
+      host: 'https://accounts.cloud.databricks.com',
+      accountId: process.env.DATABRICKS_ACCOUNT_ID,
+      username: process.env.DATABRICKS_ACCOUNT_USER,
+      password: process.env.DATABRICKS_ACCOUNT_PASSWORD,
     });
 
-    // Example usage (constructs to be implemented)
-    new DatabricksWorkspace(this, 'workspace', {
-      name: 'my-workspace',
-      region: 'us-west-2',
-      // More configuration options...
+    // Create workspace with dependencies
+    const creds = new Credentials(this, 'creds', {
+      accountId: process.env.DATABRICKS_ACCOUNT_ID!,
+      awsAccountId: process.env.AWS_ACCOUNT_ID!,
+      credentialsName: 'my-credentials',
+    });
+
+    const storage = new Storage(this, 'storage', {
+      accountId: process.env.DATABRICKS_ACCOUNT_ID!,
+      bucketName: 'my-databricks-root-storage',
+    });
+
+    new Workspace(this, 'workspace', {
+      accountId: process.env.DATABRICKS_ACCOUNT_ID!,
+      workspaceName: 'my-workspace',
+      region: 'us-east-1',
+      credentialsId: creds.credentialsId,
+      storageConfigurationId: storage.storageConfigurationId,
     });
   }
 }
@@ -73,11 +136,20 @@ new MyStack(app, 'my-databricks-stack');
 app.synth();
 ```
 
-## (TBD) Available Constructs
+## Available Constructs
 
-🚧 **Under Development** - This library is currently in early development. The following constructs are planned:
+### Currently Implemented
 
-- **DatabricksWorkspace** - Complete workspace setup with networking and security
+- **Workspace** - Databricks workspace creation (Classic and Serverless modes)
+- **Credentials** - AWS IAM cross-account role configuration
+- **Storage** - S3 bucket setup for workspace root storage
+- **UnityCatalogMetastore** - Unity Catalog metastore with S3 backend
+- **UnityCatalogRole** - IAM roles for Unity Catalog data access
+
+### Planned Constructs
+
+🚧 **Under Development** - The following constructs are planned:
+
 - **DatabricksCluster** - Managed compute clusters with auto-scaling
 - **DatabricksJob** - Scheduled and triggered job workflows
 - **DatabricksNotebook** - Notebook management and deployment
@@ -86,12 +158,14 @@ app.synth();
 
 ## Development
 
-### (TBD) Prerequisites
+### Prerequisites
 
 - Node.js 18+
-- yarn or npm
+- npm or yarn
+- AWS CLI configured (for AWS deployments)
+- Databricks account credentials
 
-### (TBD) Setup
+### Setup
 
 ```bash
 # Clone the repository
@@ -99,22 +173,26 @@ git clone https://github.com/mats.kazuki/cdktf-databricks-constructs.git
 cd cdktf-databricks-constructs
 
 # Install dependencies
-yarn install
+npm install
 
 # Build the project
-yarn build
+npm run build
 
 # Run tests
-yarn test
+npm run test
 ```
 
-### (TBD) Project Structure
+### Project Structure
 
 ```
 ├── src/              # Source code
+│   ├── provisioning/ # Workspace provisioning constructs
+│   └── unity-catalog/# Unity Catalog constructs
 ├── test/             # Test files
-├── docs/             # Documentation
-├── examples/         # Usage examples
+├── lib/              # Compiled JavaScript
+├── dist/             # Distribution packages
+├── main.ts           # Example CDKTF application
+├── cdktf.json        # CDKTF configuration
 └── .projenrc.ts      # Projen configuration
 ```
 

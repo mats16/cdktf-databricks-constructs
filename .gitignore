@@ -33,6 +33,7 @@ jspm_packages/
 cdktf.out/**
 *.tfstate
 *.tfstate.backup
+*.tfstate.lock.info
 /test-reports/
 junit.xml
 /coverage/
