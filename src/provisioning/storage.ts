@@ -1,7 +1,6 @@
 import {
   s3Bucket,
   s3BucketPolicy,
-  s3BucketPublicAccessBlock,
 } from '@cdktf/provider-aws';
 import { DataDatabricksAwsBucketPolicy } from '@cdktf/provider-databricks/lib/data-databricks-aws-bucket-policy';
 import { MwsStorageConfigurations } from '@cdktf/provider-databricks/lib/mws-storage-configurations';
@@ -49,7 +48,7 @@ export class Storage extends Construct {
       config.storageConfigurationName ?? this.node.path;
 
     if (bucketName === undefined) {
-      const bucket = new s3Bucket.S3Bucket(this, 'root-bucket', {
+      const bucket = new RootBucket(this, 'root-bucket', {
         region,
         bucket:
           storageConfigurationName.replace(/\//g, '-').toLowerCase() +
@@ -81,25 +80,11 @@ export class RootBucket extends s3Bucket.S3Bucket {
 
     const bucketName = this.id;
 
-    const publicAccessBlock =
-      new s3BucketPublicAccessBlock.S3BucketPublicAccessBlock(
-        this,
-        'public-access-block',
-        {
-          bucket: bucketName,
-          blockPublicAcls: true,
-          blockPublicPolicy: true,
-          ignorePublicAcls: true,
-          restrictPublicBuckets: true,
-        },
-      );
-
     const bucketPolicyDocument = new DataDatabricksAwsBucketPolicy(
       this,
       'bucket-policy-document',
       {
         bucket: bucketName,
-        dependsOn: [publicAccessBlock],
       },
     );
 
