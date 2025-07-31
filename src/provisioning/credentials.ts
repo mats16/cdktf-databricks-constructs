@@ -18,7 +18,7 @@ export interface CredentialsConfig {
 
 export class Credentials extends Construct {
   public readonly databricksAccountId: string;
-  public readonly credentiasId: string;
+  public readonly credentialsId: string;
   public readonly credentialsName: string;
   public readonly iamRole: CrossAccountRole;
 
@@ -48,16 +48,16 @@ export class Credentials extends Construct {
     });
 
     // Create Databricks Credential
-    const credential = new MwsCredentials(this, 'resource', {
+    const credentials = new MwsCredentials(this, 'resource', {
       provider,
       credentialsName,
       roleArn: crossAccountRole.roleArn,
       dependsOn: [waitPolicyPropagation],
     });
 
-    this.databricksAccountId = credential.accountId;
-    this.credentiasId = credential.credentialsId;
-    this.credentialsName = credential.credentialsName;
+    this.databricksAccountId = credentials.accountId;
+    this.credentialsId = credentials.credentialsId;
+    this.credentialsName = credentials.credentialsName;
     this.iamRole = crossAccountRole;
   }
 }

@@ -71,7 +71,7 @@ export class Workspace extends Construct {
       workspaceName,
       awsRegion: region,
       storageConfigurationId: storage?.storageConfigurationId,
-      credentialsId: credentials?.credentiasId,
+      credentialsId: credentials?.credentialsId,
       //networkId: network?.networkId,
       computeMode: computeMode,
     });
