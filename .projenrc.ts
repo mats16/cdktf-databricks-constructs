@@ -2,7 +2,7 @@ import { cdktf } from 'projen';
 const project = new cdktf.ConstructLibraryCdktf({
   author: 'mats',
   authorAddress: 'mats.kazuki@gmail.com',
-  cdktfVersion: '^0.13.0',
+  cdktfVersion: '^0.21.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.8.0',
   name: 'cdktf-databricks-constructs',
