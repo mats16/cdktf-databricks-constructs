@@ -5,7 +5,7 @@ import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
 import { DatabricksProvider } from "@cdktf/provider-databricks/lib/provider";
 import { TerraformStack } from "cdktf";
 import { 
-  Workspace, 
+  Workspace,
 } from "./src";
 
 class DatabricksStack extends TerraformStack {
@@ -24,7 +24,7 @@ class DatabricksStack extends TerraformStack {
     new Workspace(this, "dev1", {
       provider: databricksProvider,
       databricksAccountId: "0d26daa6-5e44-4c97-a497-ef015f91254a",
-      region: 'us-east-1',
+      region: 'ap-northeast-1',
     });
   }
 }

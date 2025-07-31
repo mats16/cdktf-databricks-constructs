@@ -1,5 +1,6 @@
 import { MwsWorkspaces } from '@cdktf/provider-databricks/lib/mws-workspaces';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
+import { MetastoreAssignment } from '@cdktf/provider-databricks/lib/metastore-assignment';
 import { Construct } from 'constructs';
 import { Credentials } from './credentials';
 import { Storage } from './storage';
@@ -22,6 +23,7 @@ export interface WorkspaceConfig {
 }
 
 export class Workspace extends Construct {
+  public readonly provider: DatabricksProvider;
   public readonly accountId: string;
   public readonly workspaceId: number;
   public readonly workspaceName: string;
@@ -32,7 +34,10 @@ export class Workspace extends Construct {
   public readonly storage?: Storage;
   public readonly credentials?: Credentials;
   //public readonly network?: Network;
-  public readonly metastore?: UnityCatalogMetastore;
+  //public readonly metastore?: UnityCatalogMetastore;
+  public readonly defaultMetastore?: UnityCatalogMetastore;
+  public readonly metastores: UnityCatalogMetastore[] = [];
+
   /**
    * Classic Workspace
    */
@@ -76,15 +81,7 @@ export class Workspace extends Construct {
       computeMode: computeMode,
     });
 
-    //const metastore = config.metastore ?? new UnityCatalogMetastore(this, "metastore", {
-    //  provider,
-    //  databricksAccountId,
-    //  region,
-    //  owner: "admins",
-    //});
-
-    //metastore.assign("default", workspace.workspaceId);
-
+    this.provider = provider;
     this.accountId = workspace.accountId;
     this.workspaceId = workspace.workspaceId;
     this.workspaceName = workspace.workspaceName;
@@ -95,7 +92,30 @@ export class Workspace extends Construct {
     this.storage = storage;
     this.credentials = credentials;
     //this.network = network;
-    //this.metastore = metastore;
+
+    const metastore =
+      config.metastore ??
+      new UnityCatalogMetastore(this, 'metastore', {
+        provider,
+        databricksAccountId,
+        region,
+      });
+
+    this.assignMetastore('default-metastore', metastore);
+    this.defaultMetastore = metastore;
+  }
+
+  assignMetastore(
+    id: string,
+    metastore: UnityCatalogMetastore,
+  ): MetastoreAssignment {
+    const assignment = new MetastoreAssignment(this, id, {
+      provider: this.provider,
+      workspaceId: this.workspaceId,
+      metastoreId: metastore.metastoreId,
+    });
+    this.metastores.push(metastore);
+    return assignment;
   }
 }
 

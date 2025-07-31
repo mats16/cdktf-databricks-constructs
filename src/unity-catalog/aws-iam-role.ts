@@ -37,6 +37,7 @@ export class UnityCatalogRole extends Construct {
     const role = new iamRole.IamRole(this, 'resource', {
       name: roleName,
       assumeRolePolicy: assumeRolePolicy.json,
+      forceDetachPolicies: true,
     });
 
     const policyDocument = new UnityCatalogPolicy(role, 'policy-document', {

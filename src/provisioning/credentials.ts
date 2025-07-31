@@ -79,9 +79,16 @@ export class CrossAccountRole extends Construct {
   constructor(scope: Construct, id: string, config: CrossAccountRoleConfig) {
     super(scope, id);
 
-    const externalId = config.externalId;
-    const roleName =
-      config.roleName ?? scope.node.path.replace(/\//g, '-').toLowerCase();
+    const { externalId, roleName } = config;
+    //const roleName =
+    //  config.roleName ?? scope.node.path.replace(/\//g, '-').toLowerCase();
+    let roleNamePrefix: string | undefined;
+    if (roleName === undefined) {
+      roleNamePrefix = [scope.node.path, id]
+        .join('-')
+        .replace(/\//g, '-')
+        .toLowerCase();
+    }
     const policyType = config.policyType ?? 'managed';
 
     const assumeRolePolicy = new DataDatabricksAwsAssumeRolePolicy(
@@ -92,8 +99,10 @@ export class CrossAccountRole extends Construct {
 
     const role = new iamRole.IamRole(this, 'resource', {
       name: roleName,
+      namePrefix: roleNamePrefix,
       description: `Databricks Cross Account Role (${scope.node.path})`,
       assumeRolePolicy: assumeRolePolicy.json,
+      forceDetachPolicies: true,
     });
 
     const crossAccountPolicyDocument = new DataDatabricksAwsCrossaccountPolicy(
@@ -104,7 +113,7 @@ export class CrossAccountRole extends Construct {
 
     // Attach inline policy
     this.policy = new iamRolePolicy.IamRolePolicy(this, 'policy', {
-      role: roleName,
+      role: role.name,
       name: 'databricks-cross-account-policy',
       policy: crossAccountPolicyDocument.json,
     });

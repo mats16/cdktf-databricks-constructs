@@ -1,6 +1,5 @@
 import { s3Bucket, s3BucketCorsConfiguration } from '@cdktf/provider-aws';
 import { Metastore as RawMetastore } from '@cdktf/provider-databricks/lib/metastore';
-import { MetastoreAssignment } from '@cdktf/provider-databricks/lib/metastore-assignment';
 import { MetastoreDataAccess } from '@cdktf/provider-databricks/lib/metastore-data-access';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
 import { Construct } from 'constructs';
@@ -46,23 +45,9 @@ export class UnityCatalogMetastore extends Construct {
     let storageRoot = config.storageRoot;
     if (storageRoot === undefined) {
       // Create new bucket
-      const bucket = new s3Bucket.S3Bucket(this, 'bucket', {
+      const bucket = new MetastoreBucket(this, 'bucket', {
         region,
-        bucket: metastoreName,
         forceDestroy: true,
-      });
-      // Set CORS configuration
-      new s3BucketCorsConfiguration.S3BucketCorsConfiguration(bucket, 'cors', {
-        bucket: bucket.id,
-        corsRule: [
-          {
-            allowedHeaders: [],
-            allowedMethods: ['PUT'],
-            allowedOrigins: ['https://*.databricks.com'],
-            exposeHeaders: [],
-            maxAgeSeconds: 1800,
-          },
-        ],
       });
       // Set storage-root
       storageRoot = `s3://${bucket.id}`;
@@ -108,19 +93,40 @@ export class UnityCatalogMetastore extends Construct {
     return new MetastoreDataAccess(this, id, {
       provider: this.provider,
       metastoreId: this.metastoreId,
-      name: this.metastoreName + '-' + id,
-      comment: this.node.path + '/' + id,
+      name: `${this.metastoreName}-${id}`,
+      comment: `${this.node.path}/${id}`,
       awsIamRole: { roleArn },
       isDefault,
       forceDestroy: true,
     });
   }
+}
 
-  assign(id: string, workspaceId: number): MetastoreAssignment {
-    return new MetastoreAssignment(this, id, {
-      provider: this.provider,
-      metastoreId: this.metastoreId,
-      workspaceId,
+export class MetastoreBucket extends s3Bucket.S3Bucket {
+  constructor(scope: Construct, id: string, config: s3Bucket.S3BucketConfig) {
+    let bucketPrefix: string | undefined;
+    if (config.bucket === undefined) {
+      bucketPrefix = `${scope.node.path}-${id}-`
+        .replace(/\//g, '-')
+        .toLowerCase()
+        .slice(0, 37);
+    }
+
+    super(scope, id, { ...config, bucketPrefix });
+
+    // Set CORS configuration
+    new s3BucketCorsConfiguration.S3BucketCorsConfiguration(this, 'cors', {
+      region: this.region,
+      bucket: this.id,
+      corsRule: [
+        {
+          allowedHeaders: [],
+          allowedMethods: ['PUT'],
+          allowedOrigins: ['https://*.databricks.com'],
+          exposeHeaders: [],
+          maxAgeSeconds: 1800,
+        },
+      ],
     });
   }
 }

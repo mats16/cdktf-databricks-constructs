@@ -45,11 +45,8 @@ export class Storage extends Construct {
       config.storageConfigurationName ?? this.node.path;
 
     if (bucketName === undefined) {
-      const bucket = new RootBucket(this, 'root-bucket', {
+      const bucket = new RootBucket(this, 'bucket', {
         region,
-        bucket:
-          storageConfigurationName.replace(/\//g, '-').toLowerCase() +
-          '-root-bucket',
         forceDestroy: true,
       });
       bucketName = bucket.id;
@@ -73,7 +70,15 @@ export class RootBucket extends s3Bucket.S3Bucket {
   public readonly bucketPolicy: s3BucketPolicy.S3BucketPolicy;
 
   constructor(scope: Construct, id: string, config: s3Bucket.S3BucketConfig) {
-    super(scope, id, config);
+    let bucketPrefix: string | undefined;
+    if (config.bucket === undefined) {
+      bucketPrefix = `${scope.node.path}-${id}-`
+        .replace(/\//g, '-')
+        .toLowerCase()
+        .slice(0, 37);
+    }
+
+    super(scope, id, { ...config, bucketPrefix });
 
     const bucketName = this.id;
 
