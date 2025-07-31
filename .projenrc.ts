@@ -15,7 +15,9 @@ const project = new cdktf.ConstructLibraryCdktf({
     '@cdktf/provider-time@^11.0.0',
   ],
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
+  devDeps: [
+    'prettier',
+  ],
   // packageName: undefined,  /* The "name" in package.json. */
 });
 project.synth();
