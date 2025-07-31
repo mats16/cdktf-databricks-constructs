@@ -14,8 +14,7 @@ const project = new cdktf.ConstructLibraryCdktf({
 
   packageName: 'cdktf-databricks-constructs',
 
-  deps: [
-  ],
+  deps: [],
   peerDeps: [
     '@cdktf/provider-aws@^21.5.0',
     '@cdktf/provider-databricks@^15.3.0',
@@ -34,6 +33,12 @@ const project = new cdktf.ConstructLibraryCdktf({
       tabWidth: 2,
     },
   },
+
+  gitignore: [
+    'cdktf.out/**',
+    '*.tfstate',
+    '*.tfstate.backup',
+  ],
 });
 
 project.addTask('format', {

@@ -30,6 +30,9 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+cdktf.out/**
+*.tfstate
+*.tfstate.backup
 /test-reports/
 junit.xml
 /coverage/
