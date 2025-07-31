@@ -1,6 +1,6 @@
+import { MetastoreAssignment } from '@cdktf/provider-databricks/lib/metastore-assignment';
 import { MwsWorkspaces } from '@cdktf/provider-databricks/lib/mws-workspaces';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
-import { MetastoreAssignment } from '@cdktf/provider-databricks/lib/metastore-assignment';
 import { Construct } from 'constructs';
 import { Credentials } from './credentials';
 import { Storage } from './storage';

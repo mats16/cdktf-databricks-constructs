@@ -305,6 +305,1501 @@ public readonly roleName: string;
 ---
 
 
+### MetastoreBucket <a name="MetastoreBucket" id="cdktf-databricks-constructs.MetastoreBucket"></a>
+
+#### Initializers <a name="Initializers" id="cdktf-databricks-constructs.MetastoreBucket.Initializer"></a>
+
+```typescript
+import { MetastoreBucket } from 'cdktf-databricks-constructs'
+
+new MetastoreBucket(scope: Construct, id: string, config: S3BucketConfig)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.Initializer.parameter.config">config</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketConfig</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="cdktf-databricks-constructs.MetastoreBucket.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.MetastoreBucket.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `config`<sup>Required</sup> <a name="config" id="cdktf-databricks-constructs.MetastoreBucket.Initializer.parameter.config"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketConfig
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.addOverride">addOverride</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.toHclTerraform">toHclTerraform</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.toMetadata">toMetadata</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getListAttribute">getListAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getNumberAttribute">getNumberAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getNumberListAttribute">getNumberListAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getStringAttribute">getStringAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.importFrom">importFrom</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putCorsRule">putCorsRule</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putGrant">putGrant</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putLifecycleRule">putLifecycleRule</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putLogging">putLogging</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putObjectLockConfiguration">putObjectLockConfiguration</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putReplicationConfiguration">putReplicationConfiguration</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putServerSideEncryptionConfiguration">putServerSideEncryptionConfiguration</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putTimeouts">putTimeouts</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putVersioning">putVersioning</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.putWebsite">putWebsite</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetAccelerationStatus">resetAccelerationStatus</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetAcl">resetAcl</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetBucket">resetBucket</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetBucketPrefix">resetBucketPrefix</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetCorsRule">resetCorsRule</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetForceDestroy">resetForceDestroy</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetGrant">resetGrant</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetId">resetId</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetLifecycleRule">resetLifecycleRule</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetLogging">resetLogging</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetObjectLockConfiguration">resetObjectLockConfiguration</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetObjectLockEnabled">resetObjectLockEnabled</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetPolicy">resetPolicy</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetRegion">resetRegion</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetReplicationConfiguration">resetReplicationConfiguration</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetRequestPayer">resetRequestPayer</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetServerSideEncryptionConfiguration">resetServerSideEncryptionConfiguration</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetTags">resetTags</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetTagsAll">resetTagsAll</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetTimeouts">resetTimeouts</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetVersioning">resetVersioning</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.resetWebsite">resetWebsite</a></code> | *No description.* |
+
+---
+
+##### `toString` <a name="toString" id="cdktf-databricks-constructs.MetastoreBucket.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addOverride` <a name="addOverride" id="cdktf-databricks-constructs.MetastoreBucket.addOverride"></a>
+
+```typescript
+public addOverride(path: string, value: any): void
+```
+
+###### `path`<sup>Required</sup> <a name="path" id="cdktf-databricks-constructs.MetastoreBucket.addOverride.parameter.path"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.addOverride.parameter.value"></a>
+
+- *Type:* any
+
+---
+
+##### `overrideLogicalId` <a name="overrideLogicalId" id="cdktf-databricks-constructs.MetastoreBucket.overrideLogicalId"></a>
+
+```typescript
+public overrideLogicalId(newLogicalId: string): void
+```
+
+Overrides the auto-generated logical ID with a specific ID.
+
+###### `newLogicalId`<sup>Required</sup> <a name="newLogicalId" id="cdktf-databricks-constructs.MetastoreBucket.overrideLogicalId.parameter.newLogicalId"></a>
+
+- *Type:* string
+
+The new logical ID to use for this stack element.
+
+---
+
+##### `resetOverrideLogicalId` <a name="resetOverrideLogicalId" id="cdktf-databricks-constructs.MetastoreBucket.resetOverrideLogicalId"></a>
+
+```typescript
+public resetOverrideLogicalId(): void
+```
+
+Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="cdktf-databricks-constructs.MetastoreBucket.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+##### `toMetadata` <a name="toMetadata" id="cdktf-databricks-constructs.MetastoreBucket.toMetadata"></a>
+
+```typescript
+public toMetadata(): any
+```
+
+##### `toTerraform` <a name="toTerraform" id="cdktf-databricks-constructs.MetastoreBucket.toTerraform"></a>
+
+```typescript
+public toTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="cdktf-databricks-constructs.MetastoreBucket.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="cdktf-databricks-constructs.MetastoreBucket.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
+
+##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getAnyMapAttribute"></a>
+
+```typescript
+public getAnyMapAttribute(terraformAttribute: string): {[ key: string ]: any}
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getAnyMapAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getBooleanAttribute` <a name="getBooleanAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getBooleanAttribute"></a>
+
+```typescript
+public getBooleanAttribute(terraformAttribute: string): IResolvable
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getBooleanAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getBooleanMapAttribute` <a name="getBooleanMapAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getBooleanMapAttribute"></a>
+
+```typescript
+public getBooleanMapAttribute(terraformAttribute: string): {[ key: string ]: boolean}
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getBooleanMapAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getListAttribute` <a name="getListAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getListAttribute"></a>
+
+```typescript
+public getListAttribute(terraformAttribute: string): string[]
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getListAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getNumberAttribute` <a name="getNumberAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getNumberAttribute"></a>
+
+```typescript
+public getNumberAttribute(terraformAttribute: string): number
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getNumberAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getNumberListAttribute` <a name="getNumberListAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getNumberListAttribute"></a>
+
+```typescript
+public getNumberListAttribute(terraformAttribute: string): number[]
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getNumberListAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getNumberMapAttribute` <a name="getNumberMapAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getNumberMapAttribute"></a>
+
+```typescript
+public getNumberMapAttribute(terraformAttribute: string): {[ key: string ]: number}
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getNumberMapAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getStringAttribute` <a name="getStringAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getStringAttribute"></a>
+
+```typescript
+public getStringAttribute(terraformAttribute: string): string
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getStringAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `getStringMapAttribute` <a name="getStringMapAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getStringMapAttribute"></a>
+
+```typescript
+public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: string}
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.getStringMapAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `hasResourceMove` <a name="hasResourceMove" id="cdktf-databricks-constructs.MetastoreBucket.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="cdktf-databricks-constructs.MetastoreBucket.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.MetastoreBucket.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="cdktf-databricks-constructs.MetastoreBucket.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `interpolationForAttribute` <a name="interpolationForAttribute" id="cdktf-databricks-constructs.MetastoreBucket.interpolationForAttribute"></a>
+
+```typescript
+public interpolationForAttribute(terraformAttribute: string): IResolvable
+```
+
+###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="cdktf-databricks-constructs.MetastoreBucket.interpolationForAttribute.parameter.terraformAttribute"></a>
+
+- *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="cdktf-databricks-constructs.MetastoreBucket.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.MetastoreBucket.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="cdktf-databricks-constructs.MetastoreBucket.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="cdktf-databricks-constructs.MetastoreBucket.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="cdktf-databricks-constructs.MetastoreBucket.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="cdktf-databricks-constructs.MetastoreBucket.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.MetastoreBucket.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `putCorsRule` <a name="putCorsRule" id="cdktf-databricks-constructs.MetastoreBucket.putCorsRule"></a>
+
+```typescript
+public putCorsRule(value: IResolvable | S3BucketCorsRule[]): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putCorsRule.parameter.value"></a>
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketCorsRule[]
+
+---
+
+##### `putGrant` <a name="putGrant" id="cdktf-databricks-constructs.MetastoreBucket.putGrant"></a>
+
+```typescript
+public putGrant(value: IResolvable | S3BucketGrant[]): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putGrant.parameter.value"></a>
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketGrant[]
+
+---
+
+##### `putLifecycleRule` <a name="putLifecycleRule" id="cdktf-databricks-constructs.MetastoreBucket.putLifecycleRule"></a>
+
+```typescript
+public putLifecycleRule(value: IResolvable | S3BucketLifecycleRule[]): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putLifecycleRule.parameter.value"></a>
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketLifecycleRule[]
+
+---
+
+##### `putLogging` <a name="putLogging" id="cdktf-databricks-constructs.MetastoreBucket.putLogging"></a>
+
+```typescript
+public putLogging(value: S3BucketLogging): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putLogging.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketLogging
+
+---
+
+##### `putObjectLockConfiguration` <a name="putObjectLockConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.putObjectLockConfiguration"></a>
+
+```typescript
+public putObjectLockConfiguration(value: S3BucketObjectLockConfiguration): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putObjectLockConfiguration.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketObjectLockConfiguration
+
+---
+
+##### `putReplicationConfiguration` <a name="putReplicationConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.putReplicationConfiguration"></a>
+
+```typescript
+public putReplicationConfiguration(value: S3BucketReplicationConfiguration): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putReplicationConfiguration.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketReplicationConfiguration
+
+---
+
+##### `putServerSideEncryptionConfiguration` <a name="putServerSideEncryptionConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.putServerSideEncryptionConfiguration"></a>
+
+```typescript
+public putServerSideEncryptionConfiguration(value: S3BucketServerSideEncryptionConfiguration): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putServerSideEncryptionConfiguration.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketServerSideEncryptionConfiguration
+
+---
+
+##### `putTimeouts` <a name="putTimeouts" id="cdktf-databricks-constructs.MetastoreBucket.putTimeouts"></a>
+
+```typescript
+public putTimeouts(value: S3BucketTimeouts): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putTimeouts.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketTimeouts
+
+---
+
+##### `putVersioning` <a name="putVersioning" id="cdktf-databricks-constructs.MetastoreBucket.putVersioning"></a>
+
+```typescript
+public putVersioning(value: S3BucketVersioning): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putVersioning.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketVersioning
+
+---
+
+##### `putWebsite` <a name="putWebsite" id="cdktf-databricks-constructs.MetastoreBucket.putWebsite"></a>
+
+```typescript
+public putWebsite(value: S3BucketWebsite): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="cdktf-databricks-constructs.MetastoreBucket.putWebsite.parameter.value"></a>
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketWebsite
+
+---
+
+##### `resetAccelerationStatus` <a name="resetAccelerationStatus" id="cdktf-databricks-constructs.MetastoreBucket.resetAccelerationStatus"></a>
+
+```typescript
+public resetAccelerationStatus(): void
+```
+
+##### `resetAcl` <a name="resetAcl" id="cdktf-databricks-constructs.MetastoreBucket.resetAcl"></a>
+
+```typescript
+public resetAcl(): void
+```
+
+##### `resetBucket` <a name="resetBucket" id="cdktf-databricks-constructs.MetastoreBucket.resetBucket"></a>
+
+```typescript
+public resetBucket(): void
+```
+
+##### `resetBucketPrefix` <a name="resetBucketPrefix" id="cdktf-databricks-constructs.MetastoreBucket.resetBucketPrefix"></a>
+
+```typescript
+public resetBucketPrefix(): void
+```
+
+##### `resetCorsRule` <a name="resetCorsRule" id="cdktf-databricks-constructs.MetastoreBucket.resetCorsRule"></a>
+
+```typescript
+public resetCorsRule(): void
+```
+
+##### `resetForceDestroy` <a name="resetForceDestroy" id="cdktf-databricks-constructs.MetastoreBucket.resetForceDestroy"></a>
+
+```typescript
+public resetForceDestroy(): void
+```
+
+##### `resetGrant` <a name="resetGrant" id="cdktf-databricks-constructs.MetastoreBucket.resetGrant"></a>
+
+```typescript
+public resetGrant(): void
+```
+
+##### `resetId` <a name="resetId" id="cdktf-databricks-constructs.MetastoreBucket.resetId"></a>
+
+```typescript
+public resetId(): void
+```
+
+##### `resetLifecycleRule` <a name="resetLifecycleRule" id="cdktf-databricks-constructs.MetastoreBucket.resetLifecycleRule"></a>
+
+```typescript
+public resetLifecycleRule(): void
+```
+
+##### `resetLogging` <a name="resetLogging" id="cdktf-databricks-constructs.MetastoreBucket.resetLogging"></a>
+
+```typescript
+public resetLogging(): void
+```
+
+##### `resetObjectLockConfiguration` <a name="resetObjectLockConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.resetObjectLockConfiguration"></a>
+
+```typescript
+public resetObjectLockConfiguration(): void
+```
+
+##### `resetObjectLockEnabled` <a name="resetObjectLockEnabled" id="cdktf-databricks-constructs.MetastoreBucket.resetObjectLockEnabled"></a>
+
+```typescript
+public resetObjectLockEnabled(): void
+```
+
+##### `resetPolicy` <a name="resetPolicy" id="cdktf-databricks-constructs.MetastoreBucket.resetPolicy"></a>
+
+```typescript
+public resetPolicy(): void
+```
+
+##### `resetRegion` <a name="resetRegion" id="cdktf-databricks-constructs.MetastoreBucket.resetRegion"></a>
+
+```typescript
+public resetRegion(): void
+```
+
+##### `resetReplicationConfiguration` <a name="resetReplicationConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.resetReplicationConfiguration"></a>
+
+```typescript
+public resetReplicationConfiguration(): void
+```
+
+##### `resetRequestPayer` <a name="resetRequestPayer" id="cdktf-databricks-constructs.MetastoreBucket.resetRequestPayer"></a>
+
+```typescript
+public resetRequestPayer(): void
+```
+
+##### `resetServerSideEncryptionConfiguration` <a name="resetServerSideEncryptionConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.resetServerSideEncryptionConfiguration"></a>
+
+```typescript
+public resetServerSideEncryptionConfiguration(): void
+```
+
+##### `resetTags` <a name="resetTags" id="cdktf-databricks-constructs.MetastoreBucket.resetTags"></a>
+
+```typescript
+public resetTags(): void
+```
+
+##### `resetTagsAll` <a name="resetTagsAll" id="cdktf-databricks-constructs.MetastoreBucket.resetTagsAll"></a>
+
+```typescript
+public resetTagsAll(): void
+```
+
+##### `resetTimeouts` <a name="resetTimeouts" id="cdktf-databricks-constructs.MetastoreBucket.resetTimeouts"></a>
+
+```typescript
+public resetTimeouts(): void
+```
+
+##### `resetVersioning` <a name="resetVersioning" id="cdktf-databricks-constructs.MetastoreBucket.resetVersioning"></a>
+
+```typescript
+public resetVersioning(): void
+```
+
+##### `resetWebsite` <a name="resetWebsite" id="cdktf-databricks-constructs.MetastoreBucket.resetWebsite"></a>
+
+```typescript
+public resetWebsite(): void
+```
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.isTerraformElement">isTerraformElement</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a S3Bucket resource upon running "cdktf plan <stack-name>". |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="cdktf-databricks-constructs.MetastoreBucket.isConstruct"></a>
+
+```typescript
+import { MetastoreBucket } from 'cdktf-databricks-constructs'
+
+MetastoreBucket.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdktf-databricks-constructs.MetastoreBucket.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isTerraformElement` <a name="isTerraformElement" id="cdktf-databricks-constructs.MetastoreBucket.isTerraformElement"></a>
+
+```typescript
+import { MetastoreBucket } from 'cdktf-databricks-constructs'
+
+MetastoreBucket.isTerraformElement(x: any)
+```
+
+###### `x`<sup>Required</sup> <a name="x" id="cdktf-databricks-constructs.MetastoreBucket.isTerraformElement.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `isTerraformResource` <a name="isTerraformResource" id="cdktf-databricks-constructs.MetastoreBucket.isTerraformResource"></a>
+
+```typescript
+import { MetastoreBucket } from 'cdktf-databricks-constructs'
+
+MetastoreBucket.isTerraformResource(x: any)
+```
+
+###### `x`<sup>Required</sup> <a name="x" id="cdktf-databricks-constructs.MetastoreBucket.isTerraformResource.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="cdktf-databricks-constructs.MetastoreBucket.generateConfigForImport"></a>
+
+```typescript
+import { MetastoreBucket } from 'cdktf-databricks-constructs'
+
+MetastoreBucket.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a S3Bucket resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="cdktf-databricks-constructs.MetastoreBucket.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="cdktf-databricks-constructs.MetastoreBucket.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the S3Bucket to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="cdktf-databricks-constructs.MetastoreBucket.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing S3Bucket that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/6.6.0/docs/resources/s3_bucket#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="cdktf-databricks-constructs.MetastoreBucket.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the S3Bucket to import is found.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.cdktfStack">cdktfStack</a></code> | <code>cdktf.TerraformStack</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.friendlyUniqueId">friendlyUniqueId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.terraformMetaArguments">terraformMetaArguments</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.terraformResourceType">terraformResourceType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.terraformGeneratorMetadata">terraformGeneratorMetadata</a></code> | <code>cdktf.TerraformProviderGeneratorMetadata</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.dependsOn">dependsOn</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.arn">arn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucketDomainName">bucketDomainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucketRegion">bucketRegion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucketRegionalDomainName">bucketRegionalDomainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.corsRule">corsRule</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketCorsRuleList</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.grant">grant</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketGrantList</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.hostedZoneId">hostedZoneId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.lifecycleRule">lifecycleRule</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketLifecycleRuleList</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.logging">logging</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketLoggingOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.objectLockConfiguration">objectLockConfiguration</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketObjectLockConfigurationOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.replicationConfiguration">replicationConfiguration</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketReplicationConfigurationOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.serverSideEncryptionConfiguration">serverSideEncryptionConfiguration</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketServerSideEncryptionConfigurationOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.timeouts">timeouts</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketTimeoutsOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.versioning">versioning</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketVersioningOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.website">website</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketWebsiteOutputReference</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.websiteDomain">websiteDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.websiteEndpoint">websiteEndpoint</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.accelerationStatusInput">accelerationStatusInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.aclInput">aclInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucketInput">bucketInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucketPrefixInput">bucketPrefixInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.corsRuleInput">corsRuleInput</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-aws.s3Bucket.S3BucketCorsRule[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.forceDestroyInput">forceDestroyInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.grantInput">grantInput</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-aws.s3Bucket.S3BucketGrant[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.idInput">idInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.lifecycleRuleInput">lifecycleRuleInput</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-aws.s3Bucket.S3BucketLifecycleRule[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.loggingInput">loggingInput</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketLogging</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.objectLockConfigurationInput">objectLockConfigurationInput</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketObjectLockConfiguration</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.objectLockEnabledInput">objectLockEnabledInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.policyInput">policyInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.regionInput">regionInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.replicationConfigurationInput">replicationConfigurationInput</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketReplicationConfiguration</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.requestPayerInput">requestPayerInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.serverSideEncryptionConfigurationInput">serverSideEncryptionConfigurationInput</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketServerSideEncryptionConfiguration</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-aws.s3Bucket.S3BucketTimeouts</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.versioningInput">versioningInput</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketVersioning</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.websiteInput">websiteInput</a></code> | <code>@cdktf/provider-aws.s3Bucket.S3BucketWebsite</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.accelerationStatus">accelerationStatus</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.acl">acl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucket">bucket</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.bucketPrefix">bucketPrefix</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.forceDestroy">forceDestroy</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.objectLockEnabled">objectLockEnabled</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.policy">policy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.region">region</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.requestPayer">requestPayer</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.tagsAll">tagsAll</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="cdktf-databricks-constructs.MetastoreBucket.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `cdktfStack`<sup>Required</sup> <a name="cdktfStack" id="cdktf-databricks-constructs.MetastoreBucket.property.cdktfStack"></a>
+
+```typescript
+public readonly cdktfStack: TerraformStack;
+```
+
+- *Type:* cdktf.TerraformStack
+
+---
+
+##### `fqn`<sup>Required</sup> <a name="fqn" id="cdktf-databricks-constructs.MetastoreBucket.property.fqn"></a>
+
+```typescript
+public readonly fqn: string;
+```
+
+- *Type:* string
+
+---
+
+##### `friendlyUniqueId`<sup>Required</sup> <a name="friendlyUniqueId" id="cdktf-databricks-constructs.MetastoreBucket.property.friendlyUniqueId"></a>
+
+```typescript
+public readonly friendlyUniqueId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `terraformMetaArguments`<sup>Required</sup> <a name="terraformMetaArguments" id="cdktf-databricks-constructs.MetastoreBucket.property.terraformMetaArguments"></a>
+
+```typescript
+public readonly terraformMetaArguments: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+##### `terraformResourceType`<sup>Required</sup> <a name="terraformResourceType" id="cdktf-databricks-constructs.MetastoreBucket.property.terraformResourceType"></a>
+
+```typescript
+public readonly terraformResourceType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `terraformGeneratorMetadata`<sup>Optional</sup> <a name="terraformGeneratorMetadata" id="cdktf-databricks-constructs.MetastoreBucket.property.terraformGeneratorMetadata"></a>
+
+```typescript
+public readonly terraformGeneratorMetadata: TerraformProviderGeneratorMetadata;
+```
+
+- *Type:* cdktf.TerraformProviderGeneratorMetadata
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="cdktf-databricks-constructs.MetastoreBucket.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="cdktf-databricks-constructs.MetastoreBucket.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="cdktf-databricks-constructs.MetastoreBucket.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="cdktf-databricks-constructs.MetastoreBucket.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="cdktf-databricks-constructs.MetastoreBucket.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="cdktf-databricks-constructs.MetastoreBucket.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="cdktf-databricks-constructs.MetastoreBucket.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `arn`<sup>Required</sup> <a name="arn" id="cdktf-databricks-constructs.MetastoreBucket.property.arn"></a>
+
+```typescript
+public readonly arn: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucketDomainName`<sup>Required</sup> <a name="bucketDomainName" id="cdktf-databricks-constructs.MetastoreBucket.property.bucketDomainName"></a>
+
+```typescript
+public readonly bucketDomainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucketRegion`<sup>Required</sup> <a name="bucketRegion" id="cdktf-databricks-constructs.MetastoreBucket.property.bucketRegion"></a>
+
+```typescript
+public readonly bucketRegion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucketRegionalDomainName`<sup>Required</sup> <a name="bucketRegionalDomainName" id="cdktf-databricks-constructs.MetastoreBucket.property.bucketRegionalDomainName"></a>
+
+```typescript
+public readonly bucketRegionalDomainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `corsRule`<sup>Required</sup> <a name="corsRule" id="cdktf-databricks-constructs.MetastoreBucket.property.corsRule"></a>
+
+```typescript
+public readonly corsRule: S3BucketCorsRuleList;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketCorsRuleList
+
+---
+
+##### `grant`<sup>Required</sup> <a name="grant" id="cdktf-databricks-constructs.MetastoreBucket.property.grant"></a>
+
+```typescript
+public readonly grant: S3BucketGrantList;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketGrantList
+
+---
+
+##### `hostedZoneId`<sup>Required</sup> <a name="hostedZoneId" id="cdktf-databricks-constructs.MetastoreBucket.property.hostedZoneId"></a>
+
+```typescript
+public readonly hostedZoneId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `lifecycleRule`<sup>Required</sup> <a name="lifecycleRule" id="cdktf-databricks-constructs.MetastoreBucket.property.lifecycleRule"></a>
+
+```typescript
+public readonly lifecycleRule: S3BucketLifecycleRuleList;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketLifecycleRuleList
+
+---
+
+##### `logging`<sup>Required</sup> <a name="logging" id="cdktf-databricks-constructs.MetastoreBucket.property.logging"></a>
+
+```typescript
+public readonly logging: S3BucketLoggingOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketLoggingOutputReference
+
+---
+
+##### `objectLockConfiguration`<sup>Required</sup> <a name="objectLockConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.property.objectLockConfiguration"></a>
+
+```typescript
+public readonly objectLockConfiguration: S3BucketObjectLockConfigurationOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketObjectLockConfigurationOutputReference
+
+---
+
+##### `replicationConfiguration`<sup>Required</sup> <a name="replicationConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.property.replicationConfiguration"></a>
+
+```typescript
+public readonly replicationConfiguration: S3BucketReplicationConfigurationOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketReplicationConfigurationOutputReference
+
+---
+
+##### `serverSideEncryptionConfiguration`<sup>Required</sup> <a name="serverSideEncryptionConfiguration" id="cdktf-databricks-constructs.MetastoreBucket.property.serverSideEncryptionConfiguration"></a>
+
+```typescript
+public readonly serverSideEncryptionConfiguration: S3BucketServerSideEncryptionConfigurationOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketServerSideEncryptionConfigurationOutputReference
+
+---
+
+##### `timeouts`<sup>Required</sup> <a name="timeouts" id="cdktf-databricks-constructs.MetastoreBucket.property.timeouts"></a>
+
+```typescript
+public readonly timeouts: S3BucketTimeoutsOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketTimeoutsOutputReference
+
+---
+
+##### `versioning`<sup>Required</sup> <a name="versioning" id="cdktf-databricks-constructs.MetastoreBucket.property.versioning"></a>
+
+```typescript
+public readonly versioning: S3BucketVersioningOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketVersioningOutputReference
+
+---
+
+##### `website`<sup>Required</sup> <a name="website" id="cdktf-databricks-constructs.MetastoreBucket.property.website"></a>
+
+```typescript
+public readonly website: S3BucketWebsiteOutputReference;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketWebsiteOutputReference
+
+---
+
+##### `websiteDomain`<sup>Required</sup> <a name="websiteDomain" id="cdktf-databricks-constructs.MetastoreBucket.property.websiteDomain"></a>
+
+```typescript
+public readonly websiteDomain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `websiteEndpoint`<sup>Required</sup> <a name="websiteEndpoint" id="cdktf-databricks-constructs.MetastoreBucket.property.websiteEndpoint"></a>
+
+```typescript
+public readonly websiteEndpoint: string;
+```
+
+- *Type:* string
+
+---
+
+##### `accelerationStatusInput`<sup>Optional</sup> <a name="accelerationStatusInput" id="cdktf-databricks-constructs.MetastoreBucket.property.accelerationStatusInput"></a>
+
+```typescript
+public readonly accelerationStatusInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `aclInput`<sup>Optional</sup> <a name="aclInput" id="cdktf-databricks-constructs.MetastoreBucket.property.aclInput"></a>
+
+```typescript
+public readonly aclInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucketInput`<sup>Optional</sup> <a name="bucketInput" id="cdktf-databricks-constructs.MetastoreBucket.property.bucketInput"></a>
+
+```typescript
+public readonly bucketInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucketPrefixInput`<sup>Optional</sup> <a name="bucketPrefixInput" id="cdktf-databricks-constructs.MetastoreBucket.property.bucketPrefixInput"></a>
+
+```typescript
+public readonly bucketPrefixInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `corsRuleInput`<sup>Optional</sup> <a name="corsRuleInput" id="cdktf-databricks-constructs.MetastoreBucket.property.corsRuleInput"></a>
+
+```typescript
+public readonly corsRuleInput: IResolvable | S3BucketCorsRule[];
+```
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketCorsRule[]
+
+---
+
+##### `forceDestroyInput`<sup>Optional</sup> <a name="forceDestroyInput" id="cdktf-databricks-constructs.MetastoreBucket.property.forceDestroyInput"></a>
+
+```typescript
+public readonly forceDestroyInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktf.IResolvable
+
+---
+
+##### `grantInput`<sup>Optional</sup> <a name="grantInput" id="cdktf-databricks-constructs.MetastoreBucket.property.grantInput"></a>
+
+```typescript
+public readonly grantInput: IResolvable | S3BucketGrant[];
+```
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketGrant[]
+
+---
+
+##### `idInput`<sup>Optional</sup> <a name="idInput" id="cdktf-databricks-constructs.MetastoreBucket.property.idInput"></a>
+
+```typescript
+public readonly idInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `lifecycleRuleInput`<sup>Optional</sup> <a name="lifecycleRuleInput" id="cdktf-databricks-constructs.MetastoreBucket.property.lifecycleRuleInput"></a>
+
+```typescript
+public readonly lifecycleRuleInput: IResolvable | S3BucketLifecycleRule[];
+```
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketLifecycleRule[]
+
+---
+
+##### `loggingInput`<sup>Optional</sup> <a name="loggingInput" id="cdktf-databricks-constructs.MetastoreBucket.property.loggingInput"></a>
+
+```typescript
+public readonly loggingInput: S3BucketLogging;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketLogging
+
+---
+
+##### `objectLockConfigurationInput`<sup>Optional</sup> <a name="objectLockConfigurationInput" id="cdktf-databricks-constructs.MetastoreBucket.property.objectLockConfigurationInput"></a>
+
+```typescript
+public readonly objectLockConfigurationInput: S3BucketObjectLockConfiguration;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketObjectLockConfiguration
+
+---
+
+##### `objectLockEnabledInput`<sup>Optional</sup> <a name="objectLockEnabledInput" id="cdktf-databricks-constructs.MetastoreBucket.property.objectLockEnabledInput"></a>
+
+```typescript
+public readonly objectLockEnabledInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktf.IResolvable
+
+---
+
+##### `policyInput`<sup>Optional</sup> <a name="policyInput" id="cdktf-databricks-constructs.MetastoreBucket.property.policyInput"></a>
+
+```typescript
+public readonly policyInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `regionInput`<sup>Optional</sup> <a name="regionInput" id="cdktf-databricks-constructs.MetastoreBucket.property.regionInput"></a>
+
+```typescript
+public readonly regionInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `replicationConfigurationInput`<sup>Optional</sup> <a name="replicationConfigurationInput" id="cdktf-databricks-constructs.MetastoreBucket.property.replicationConfigurationInput"></a>
+
+```typescript
+public readonly replicationConfigurationInput: S3BucketReplicationConfiguration;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketReplicationConfiguration
+
+---
+
+##### `requestPayerInput`<sup>Optional</sup> <a name="requestPayerInput" id="cdktf-databricks-constructs.MetastoreBucket.property.requestPayerInput"></a>
+
+```typescript
+public readonly requestPayerInput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `serverSideEncryptionConfigurationInput`<sup>Optional</sup> <a name="serverSideEncryptionConfigurationInput" id="cdktf-databricks-constructs.MetastoreBucket.property.serverSideEncryptionConfigurationInput"></a>
+
+```typescript
+public readonly serverSideEncryptionConfigurationInput: S3BucketServerSideEncryptionConfiguration;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketServerSideEncryptionConfiguration
+
+---
+
+##### `tagsAllInput`<sup>Optional</sup> <a name="tagsAllInput" id="cdktf-databricks-constructs.MetastoreBucket.property.tagsAllInput"></a>
+
+```typescript
+public readonly tagsAllInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsInput`<sup>Optional</sup> <a name="tagsInput" id="cdktf-databricks-constructs.MetastoreBucket.property.tagsInput"></a>
+
+```typescript
+public readonly tagsInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="cdktf-databricks-constructs.MetastoreBucket.property.timeoutsInput"></a>
+
+```typescript
+public readonly timeoutsInput: IResolvable | S3BucketTimeouts;
+```
+
+- *Type:* cdktf.IResolvable | @cdktf/provider-aws.s3Bucket.S3BucketTimeouts
+
+---
+
+##### `versioningInput`<sup>Optional</sup> <a name="versioningInput" id="cdktf-databricks-constructs.MetastoreBucket.property.versioningInput"></a>
+
+```typescript
+public readonly versioningInput: S3BucketVersioning;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketVersioning
+
+---
+
+##### `websiteInput`<sup>Optional</sup> <a name="websiteInput" id="cdktf-databricks-constructs.MetastoreBucket.property.websiteInput"></a>
+
+```typescript
+public readonly websiteInput: S3BucketWebsite;
+```
+
+- *Type:* @cdktf/provider-aws.s3Bucket.S3BucketWebsite
+
+---
+
+##### `accelerationStatus`<sup>Required</sup> <a name="accelerationStatus" id="cdktf-databricks-constructs.MetastoreBucket.property.accelerationStatus"></a>
+
+```typescript
+public readonly accelerationStatus: string;
+```
+
+- *Type:* string
+
+---
+
+##### `acl`<sup>Required</sup> <a name="acl" id="cdktf-databricks-constructs.MetastoreBucket.property.acl"></a>
+
+```typescript
+public readonly acl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucket`<sup>Required</sup> <a name="bucket" id="cdktf-databricks-constructs.MetastoreBucket.property.bucket"></a>
+
+```typescript
+public readonly bucket: string;
+```
+
+- *Type:* string
+
+---
+
+##### `bucketPrefix`<sup>Required</sup> <a name="bucketPrefix" id="cdktf-databricks-constructs.MetastoreBucket.property.bucketPrefix"></a>
+
+```typescript
+public readonly bucketPrefix: string;
+```
+
+- *Type:* string
+
+---
+
+##### `forceDestroy`<sup>Required</sup> <a name="forceDestroy" id="cdktf-databricks-constructs.MetastoreBucket.property.forceDestroy"></a>
+
+```typescript
+public readonly forceDestroy: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktf.IResolvable
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.MetastoreBucket.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `objectLockEnabled`<sup>Required</sup> <a name="objectLockEnabled" id="cdktf-databricks-constructs.MetastoreBucket.property.objectLockEnabled"></a>
+
+```typescript
+public readonly objectLockEnabled: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktf.IResolvable
+
+---
+
+##### `policy`<sup>Required</sup> <a name="policy" id="cdktf-databricks-constructs.MetastoreBucket.property.policy"></a>
+
+```typescript
+public readonly policy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `region`<sup>Required</sup> <a name="region" id="cdktf-databricks-constructs.MetastoreBucket.property.region"></a>
+
+```typescript
+public readonly region: string;
+```
+
+- *Type:* string
+
+---
+
+##### `requestPayer`<sup>Required</sup> <a name="requestPayer" id="cdktf-databricks-constructs.MetastoreBucket.property.requestPayer"></a>
+
+```typescript
+public readonly requestPayer: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="cdktf-databricks-constructs.MetastoreBucket.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsAll`<sup>Required</sup> <a name="tagsAll" id="cdktf-databricks-constructs.MetastoreBucket.property.tagsAll"></a>
+
+```typescript
+public readonly tagsAll: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdktf-databricks-constructs.MetastoreBucket.property.tfResourceType">tfResourceType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `tfResourceType`<sup>Required</sup> <a name="tfResourceType" id="cdktf-databricks-constructs.MetastoreBucket.property.tfResourceType"></a>
+
+```typescript
+public readonly tfResourceType: string;
+```
+
+- *Type:* string
+
+---
+
 ### RootBucket <a name="RootBucket" id="cdktf-databricks-constructs.RootBucket"></a>
 
 #### Initializers <a name="Initializers" id="cdktf-databricks-constructs.RootBucket.Initializer"></a>
@@ -1852,6 +3347,7 @@ new ServerlessWorkspace(scope: Construct, id: string, config: WorkspaceConfig)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.assignMetastore">assignMetastore</a></code> | *No description.* |
 
 ---
 
@@ -1862,6 +3358,24 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `assignMetastore` <a name="assignMetastore" id="cdktf-databricks-constructs.ServerlessWorkspace.assignMetastore"></a>
+
+```typescript
+public assignMetastore(id: string, metastore: UnityCatalogMetastore): MetastoreAssignment
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.ServerlessWorkspace.assignMetastore.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `metastore`<sup>Required</sup> <a name="metastore" id="cdktf-databricks-constructs.ServerlessWorkspace.assignMetastore.parameter.metastore"></a>
+
+- *Type:* <a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1911,12 +3425,14 @@ Any object.
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.accountId">accountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.cloud">cloud</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.deploymentName">deploymentName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.metastores">metastores</a></code> | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.provider">provider</a></code> | <code>@cdktf/provider-databricks.provider.DatabricksProvider</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.region">region</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.workspaceId">workspaceId</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.workspaceName">workspaceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.workspaceUrl">workspaceUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.credentials">credentials</a></code> | <code><a href="#cdktf-databricks-constructs.Credentials">Credentials</a></code> | *No description.* |
-| <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.metastore">metastore</a></code> | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.defaultMetastore">defaultMetastore</a></code> | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a></code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.ServerlessWorkspace.property.storage">storage</a></code> | <code><a href="#cdktf-databricks-constructs.Storage">Storage</a></code> | *No description.* |
 
 ---
@@ -1960,6 +3476,26 @@ public readonly deploymentName: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `metastores`<sup>Required</sup> <a name="metastores" id="cdktf-databricks-constructs.ServerlessWorkspace.property.metastores"></a>
+
+```typescript
+public readonly metastores: UnityCatalogMetastore[];
+```
+
+- *Type:* <a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>[]
+
+---
+
+##### `provider`<sup>Required</sup> <a name="provider" id="cdktf-databricks-constructs.ServerlessWorkspace.property.provider"></a>
+
+```typescript
+public readonly provider: DatabricksProvider;
+```
+
+- *Type:* @cdktf/provider-databricks.provider.DatabricksProvider
 
 ---
 
@@ -2013,10 +3549,10 @@ public readonly credentials: Credentials;
 
 ---
 
-##### `metastore`<sup>Optional</sup> <a name="metastore" id="cdktf-databricks-constructs.ServerlessWorkspace.property.metastore"></a>
+##### `defaultMetastore`<sup>Optional</sup> <a name="defaultMetastore" id="cdktf-databricks-constructs.ServerlessWorkspace.property.defaultMetastore"></a>
 
 ```typescript
-public readonly metastore: UnityCatalogMetastore;
+public readonly defaultMetastore: UnityCatalogMetastore;
 ```
 
 - *Type:* <a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>
@@ -2232,7 +3768,6 @@ new UnityCatalogMetastore(scope: Construct, id: string, config: UnityCatalogMeta
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore.assign">assign</a></code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore.grant">grant</a></code> | *No description.* |
 
 ---
@@ -2244,24 +3779,6 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
-
-##### `assign` <a name="assign" id="cdktf-databricks-constructs.UnityCatalogMetastore.assign"></a>
-
-```typescript
-public assign(id: string, workspaceId: number): MetastoreAssignment
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.UnityCatalogMetastore.assign.parameter.id"></a>
-
-- *Type:* string
-
----
-
-###### `workspaceId`<sup>Required</sup> <a name="workspaceId" id="cdktf-databricks-constructs.UnityCatalogMetastore.assign.parameter.workspaceId"></a>
-
-- *Type:* number
-
----
 
 ##### `grant` <a name="grant" id="cdktf-databricks-constructs.UnityCatalogMetastore.grant"></a>
 
@@ -2645,6 +4162,7 @@ new Workspace(scope: Construct, id: string, config: WorkspaceConfig)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#cdktf-databricks-constructs.Workspace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#cdktf-databricks-constructs.Workspace.assignMetastore">assignMetastore</a></code> | *No description.* |
 
 ---
 
@@ -2655,6 +4173,24 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `assignMetastore` <a name="assignMetastore" id="cdktf-databricks-constructs.Workspace.assignMetastore"></a>
+
+```typescript
+public assignMetastore(id: string, metastore: UnityCatalogMetastore): MetastoreAssignment
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.Workspace.assignMetastore.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `metastore`<sup>Required</sup> <a name="metastore" id="cdktf-databricks-constructs.Workspace.assignMetastore.parameter.metastore"></a>
+
+- *Type:* <a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -2704,12 +4240,14 @@ Any object.
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.accountId">accountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.cloud">cloud</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.deploymentName">deploymentName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.Workspace.property.metastores">metastores</a></code> | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>[]</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.Workspace.property.provider">provider</a></code> | <code>@cdktf/provider-databricks.provider.DatabricksProvider</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.region">region</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.workspaceId">workspaceId</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.workspaceName">workspaceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.workspaceUrl">workspaceUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.credentials">credentials</a></code> | <code><a href="#cdktf-databricks-constructs.Credentials">Credentials</a></code> | *No description.* |
-| <code><a href="#cdktf-databricks-constructs.Workspace.property.metastore">metastore</a></code> | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a></code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.Workspace.property.defaultMetastore">defaultMetastore</a></code> | <code><a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a></code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Workspace.property.storage">storage</a></code> | <code><a href="#cdktf-databricks-constructs.Storage">Storage</a></code> | *No description.* |
 
 ---
@@ -2753,6 +4291,26 @@ public readonly deploymentName: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `metastores`<sup>Required</sup> <a name="metastores" id="cdktf-databricks-constructs.Workspace.property.metastores"></a>
+
+```typescript
+public readonly metastores: UnityCatalogMetastore[];
+```
+
+- *Type:* <a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>[]
+
+---
+
+##### `provider`<sup>Required</sup> <a name="provider" id="cdktf-databricks-constructs.Workspace.property.provider"></a>
+
+```typescript
+public readonly provider: DatabricksProvider;
+```
+
+- *Type:* @cdktf/provider-databricks.provider.DatabricksProvider
 
 ---
 
@@ -2806,10 +4364,10 @@ public readonly credentials: Credentials;
 
 ---
 
-##### `metastore`<sup>Optional</sup> <a name="metastore" id="cdktf-databricks-constructs.Workspace.property.metastore"></a>
+##### `defaultMetastore`<sup>Optional</sup> <a name="defaultMetastore" id="cdktf-databricks-constructs.Workspace.property.defaultMetastore"></a>
 
 ```typescript
-public readonly metastore: UnityCatalogMetastore;
+public readonly defaultMetastore: UnityCatalogMetastore;
 ```
 
 - *Type:* <a href="#cdktf-databricks-constructs.UnityCatalogMetastore">UnityCatalogMetastore</a>
