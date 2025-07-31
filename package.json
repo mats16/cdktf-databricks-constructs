@@ -15,7 +15,6 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
-    "format": "npx projen format",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
@@ -36,17 +35,21 @@
     "organization": false
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^2",
+    "@cdktf/provider-aws": "21.5.0",
+    "@cdktf/provider-databricks": "15.3.0",
+    "@cdktf/provider-time": "11.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.1.0",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "cdktf": "0.21.0",
     "commit-and-tag-version": "^12",
-    "constructs": "10.3.0",
+    "constructs": "10.4.2",
     "eslint": "^9",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.3",
     "jest": "^30.0.5",
     "jest-junit": "^16",
     "jsii": "~5.8.0",
@@ -61,13 +64,11 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "cdktf": "^0.21.0",
-    "constructs": "^10.3.0"
-  },
-  "dependencies": {
     "@cdktf/provider-aws": "^21.5.0",
     "@cdktf/provider-databricks": "^15.3.0",
-    "@cdktf/provider-time": "^11.0.0"
+    "@cdktf/provider-time": "^11.0.0",
+    "cdktf": "^0.21.0",
+    "constructs": "^10.4.2"
   },
   "keywords": [
     "cdk",

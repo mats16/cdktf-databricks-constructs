@@ -1,19 +1,19 @@
-import { Construct } from "constructs";
-import { iamRole, iamRolePolicy } from "@cdktf/provider-aws";
-import { DatabricksProvider } from "@cdktf/provider-databricks/lib/provider";
-import { DataDatabricksAwsAssumeRolePolicy } from "@cdktf/provider-databricks/lib/data-databricks-aws-assume-role-policy";
-import { DataDatabricksAwsCrossaccountPolicy } from "@cdktf/provider-databricks/lib/data-databricks-aws-crossaccount-policy";
-import { MwsCredentials } from "@cdktf/provider-databricks/lib/mws-credentials";
-import { TimeProvider } from "@cdktf/provider-time/lib/provider";
-import { Sleep } from "@cdktf/provider-time/lib/sleep";
+import { iamRole, iamRolePolicy } from '@cdktf/provider-aws';
+import { DataDatabricksAwsAssumeRolePolicy } from '@cdktf/provider-databricks/lib/data-databricks-aws-assume-role-policy';
+import { DataDatabricksAwsCrossaccountPolicy } from '@cdktf/provider-databricks/lib/data-databricks-aws-crossaccount-policy';
+import { MwsCredentials } from '@cdktf/provider-databricks/lib/mws-credentials';
+import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
+import { TimeProvider } from '@cdktf/provider-time/lib/provider';
+import { Sleep } from '@cdktf/provider-time/lib/sleep';
+import { Construct } from 'constructs';
 
-type PolicyType = "managed" | "customer" | "restricted";
+type PolicyType = 'managed' | 'customer' | 'restricted';
 
 export interface CredentialsConfig {
-  provider: DatabricksProvider;
-  databricksAccountId?: string;
-  credentialsName?: string;
-  policyType?: PolicyType;
+  readonly provider: DatabricksProvider;
+  readonly databricksAccountId?: string;
+  readonly credentialsName?: string;
+  readonly policyType?: PolicyType;
 }
 
 export class Credentials extends Construct {
@@ -30,25 +30,25 @@ export class Credentials extends Construct {
 
     const { provider } = config;
     const databricksAccountId =
-      config.databricksAccountId ?? provider.accountId ?? "";
+      config.databricksAccountId ?? provider.accountId ?? '';
     const credentialsName = config.credentialsName ?? this.node.path;
-    const policyType = config.policyType ?? "managed";
+    const policyType = config.policyType ?? 'managed';
 
-    const crossAccountRole = new CrossAccountRole(this, "cross-account-role", {
+    const crossAccountRole = new CrossAccountRole(this, 'cross-account-role', {
       externalId: databricksAccountId,
-      roleName: credentialsName.replace(/\//g, "-") + "-cross-account-role",
+      roleName: credentialsName.replace(/\//g, '-') + '-cross-account-role',
       policyType,
     });
 
     // Add a 5 second delay to ensure the policy attachment has time to propagate
-    new TimeProvider(this, "time");
-    const waitPolicyPropagation = new Sleep(this, "wait-policy-propagation", {
-      createDuration: "10s",
+    new TimeProvider(this, 'time');
+    const waitPolicyPropagation = new Sleep(this, 'wait-policy-propagation', {
+      createDuration: '10s',
       dependsOn: [crossAccountRole.policy],
     });
 
     // Create Databricks Credential
-    const credential = new MwsCredentials(this, "resource", {
+    const credential = new MwsCredentials(this, 'resource', {
       provider,
       credentialsName,
       roleArn: crossAccountRole.roleArn,
@@ -62,10 +62,10 @@ export class Credentials extends Construct {
   }
 }
 
-interface CrossAccountRoleConfig {
-  externalId: string;
-  roleName?: string;
-  policyType?: PolicyType;
+export interface CrossAccountRoleConfig {
+  readonly externalId: string;
+  readonly roleName?: string;
+  readonly policyType?: PolicyType;
 }
 
 export class CrossAccountRole extends Construct {
@@ -81,16 +81,16 @@ export class CrossAccountRole extends Construct {
 
     const externalId = config.externalId;
     const roleName =
-      config.roleName ?? scope.node.path.replace(/\//g, "-").toLowerCase();
-    const policyType = config.policyType ?? "managed";
+      config.roleName ?? scope.node.path.replace(/\//g, '-').toLowerCase();
+    const policyType = config.policyType ?? 'managed';
 
     const assumeRolePolicy = new DataDatabricksAwsAssumeRolePolicy(
       this,
-      "assume-role-policy",
+      'assume-role-policy',
       { externalId },
     );
 
-    const role = new iamRole.IamRole(this, "resource", {
+    const role = new iamRole.IamRole(this, 'resource', {
       name: roleName,
       description: `Databricks Cross Account Role (${scope.node.path})`,
       assumeRolePolicy: assumeRolePolicy.json,
@@ -98,14 +98,14 @@ export class CrossAccountRole extends Construct {
 
     const crossAccountPolicyDocument = new DataDatabricksAwsCrossaccountPolicy(
       this,
-      "policy-document",
+      'policy-document',
       { policyType },
     );
 
     // Attach inline policy
-    this.policy = new iamRolePolicy.IamRolePolicy(this, "policy", {
+    this.policy = new iamRolePolicy.IamRolePolicy(this, 'policy', {
       role: roleName,
-      name: "databricks-cross-account-policy",
+      name: 'databricks-cross-account-policy',
       policy: crossAccountPolicyDocument.json,
     });
 

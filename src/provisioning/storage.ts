@@ -1,19 +1,19 @@
-import { Construct } from "constructs";
 import {
   s3Bucket,
   s3BucketPolicy,
   s3BucketPublicAccessBlock,
-} from "@cdktf/provider-aws";
-import { DatabricksProvider } from "@cdktf/provider-databricks/lib/provider";
-import { DataDatabricksAwsBucketPolicy } from "@cdktf/provider-databricks/lib/data-databricks-aws-bucket-policy";
-import { MwsStorageConfigurations } from "@cdktf/provider-databricks/lib/mws-storage-configurations";
+} from '@cdktf/provider-aws';
+import { DataDatabricksAwsBucketPolicy } from '@cdktf/provider-databricks/lib/data-databricks-aws-bucket-policy';
+import { MwsStorageConfigurations } from '@cdktf/provider-databricks/lib/mws-storage-configurations';
+import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
+import { Construct } from 'constructs';
 
-interface StorageConfig {
-  provider: DatabricksProvider;
-  databricksAccountId: string;
-  storageConfigurationName?: string;
-  region?: string;
-  bucketName?: string;
+export interface StorageConfig {
+  readonly provider: DatabricksProvider;
+  readonly databricksAccountId: string;
+  readonly storageConfigurationName?: string;
+  readonly region?: string;
+  readonly bucketName?: string;
 }
 
 export class Storage extends Construct {
@@ -33,33 +33,33 @@ export class Storage extends Construct {
     const hasRegion = config.region !== undefined;
     if (hasBucket && hasRegion) {
       throw new Error(
-        "Cannot specify both bucket and region. Please specify only one.",
+        'Cannot specify both bucket and region. Please specify only one.',
       );
     } else if (!hasBucket && !hasRegion) {
       throw new Error(
-        "Must specify either bucket or region. Please specify one.",
+        'Must specify either bucket or region. Please specify one.',
       );
     }
 
     const { provider, region } = config;
     const databricksAccountId =
-      config.databricksAccountId ?? provider.accountId ?? "";
+      config.databricksAccountId ?? provider.accountId ?? '';
     let bucketName = config.bucketName;
     const storageConfigurationName =
       config.storageConfigurationName ?? this.node.path;
 
     if (bucketName === undefined) {
-      const bucket = new s3Bucket.S3Bucket(this, "root-bucket", {
+      const bucket = new s3Bucket.S3Bucket(this, 'root-bucket', {
         region,
         bucket:
-          storageConfigurationName.replace(/\//g, "-").toLowerCase() +
-          "-root-bucket",
+          storageConfigurationName.replace(/\//g, '-').toLowerCase() +
+          '-root-bucket',
         forceDestroy: true,
       });
       bucketName = bucket.id;
     }
 
-    const storage = new MwsStorageConfigurations(this, "resource", {
+    const storage = new MwsStorageConfigurations(this, 'resource', {
       provider,
       accountId: databricksAccountId,
       storageConfigurationName,
@@ -84,7 +84,7 @@ export class RootBucket extends s3Bucket.S3Bucket {
     const publicAccessBlock =
       new s3BucketPublicAccessBlock.S3BucketPublicAccessBlock(
         this,
-        "public-access-block",
+        'public-access-block',
         {
           bucket: bucketName,
           blockPublicAcls: true,
@@ -96,7 +96,7 @@ export class RootBucket extends s3Bucket.S3Bucket {
 
     const bucketPolicyDocument = new DataDatabricksAwsBucketPolicy(
       this,
-      "bucket-policy-document",
+      'bucket-policy-document',
       {
         bucket: bucketName,
         dependsOn: [publicAccessBlock],
@@ -105,7 +105,7 @@ export class RootBucket extends s3Bucket.S3Bucket {
 
     this.bucketPolicy = new s3BucketPolicy.S3BucketPolicy(
       this,
-      "bucket-policy",
+      'bucket-policy',
       {
         bucket: bucketName,
         policy: bucketPolicyDocument.json,

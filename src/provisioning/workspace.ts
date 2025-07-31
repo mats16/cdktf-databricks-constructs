@@ -1,24 +1,24 @@
-import { Construct } from "constructs";
-import { DatabricksProvider } from "@cdktf/provider-databricks/lib/provider";
-import { MwsWorkspaces } from "@cdktf/provider-databricks/lib/mws-workspaces";
-import { Storage } from "./storage";
+import { MwsWorkspaces } from '@cdktf/provider-databricks/lib/mws-workspaces';
+import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
+import { Construct } from 'constructs';
+import { Credentials } from './credentials';
+import { Storage } from './storage';
 //import { Network } from "./network";
-import { Credentials } from "./credentials";
-import { UnityCatalogMetastore } from "../unity-catalog";
+import { UnityCatalogMetastore } from '../unity-catalog';
 
-type ComputeMode = "SERVERLESS";
+type ComputeMode = 'SERVERLESS';
 
 export interface WorkspaceConfig {
-  provider: DatabricksProvider;
-  databricksAccountId: string;
-  workspaceName?: string;
-  workspaceUrl?: string;
-  region: string;
-  storage?: Storage;
-  credentials?: Credentials;
-  //network?: Network;
-  metastore?: UnityCatalogMetastore;
-  computeMode?: ComputeMode;
+  readonly provider: DatabricksProvider;
+  readonly databricksAccountId: string;
+  readonly workspaceName?: string;
+  readonly workspaceUrl?: string;
+  readonly region: string;
+  readonly storage?: Storage;
+  readonly credentials?: Credentials;
+  //readonly network?: Network;
+  readonly metastore?: UnityCatalogMetastore;
+  readonly computeMode?: ComputeMode;
 }
 
 export class Workspace extends Construct {
@@ -41,31 +41,31 @@ export class Workspace extends Construct {
 
     const { provider, region, computeMode } = config;
     const databricksAccountId =
-      config.databricksAccountId ?? provider.accountId ?? "";
+      config.databricksAccountId ?? provider.accountId ?? '';
     const workspaceName =
-      config.workspaceName ?? this.node.path.replace(/\//g, "-");
+      config.workspaceName ?? this.node.path.replace(/\//g, '-');
 
     let storage: Storage | undefined = undefined;
     let credentials: Credentials | undefined = undefined;
-    if (computeMode !== "SERVERLESS") {
+    if (computeMode !== 'SERVERLESS') {
       storage =
         config.storage ??
-        new Storage(this, "storage", {
+        new Storage(this, 'storage', {
           provider,
           databricksAccountId,
           region,
         });
       credentials =
         config.credentials ??
-        new Credentials(this, "credentials", {
+        new Credentials(this, 'credentials', {
           provider,
           databricksAccountId,
-          policyType: "managed",
+          policyType: 'managed',
           //policyType: network == undefined ? "managed" : "customer",
         });
     }
 
-    const workspace = new MwsWorkspaces(this, "resource", {
+    const workspace = new MwsWorkspaces(this, 'resource', {
       provider,
       accountId: databricksAccountId,
       workspaceName,
@@ -111,7 +111,7 @@ export class ServerlessWorkspace extends Workspace {
       region,
       //network,
       metastore,
-      computeMode: "SERVERLESS",
+      computeMode: 'SERVERLESS',
     });
   }
 }

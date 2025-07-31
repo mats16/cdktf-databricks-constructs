@@ -1,19 +1,19 @@
-import { Construct } from "constructs";
-import { s3Bucket, s3BucketCorsConfiguration } from "@cdktf/provider-aws";
-import { DatabricksProvider } from "@cdktf/provider-databricks/lib/provider";
-import { Metastore as RawMetastore } from "@cdktf/provider-databricks/lib/metastore";
-import { MetastoreAssignment } from "@cdktf/provider-databricks/lib/metastore-assignment";
-import { MetastoreDataAccess } from "@cdktf/provider-databricks/lib/metastore-data-access";
-import { UnityCatalogRole } from "./aws-iam-role";
+import { s3Bucket, s3BucketCorsConfiguration } from '@cdktf/provider-aws';
+import { Metastore as RawMetastore } from '@cdktf/provider-databricks/lib/metastore';
+import { MetastoreAssignment } from '@cdktf/provider-databricks/lib/metastore-assignment';
+import { MetastoreDataAccess } from '@cdktf/provider-databricks/lib/metastore-data-access';
+import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
+import { Construct } from 'constructs';
+import { UnityCatalogRole } from './aws-iam-role';
 
-interface UnityCatalogMetastoreConfig {
-  provider: DatabricksProvider;
-  databricksAccountId: string;
-  metastoreName?: string;
-  region: string;
-  storageRoot?: string;
-  role?: UnityCatalogRole;
-  owner?: string;
+export interface UnityCatalogMetastoreConfig {
+  readonly provider: DatabricksProvider;
+  readonly databricksAccountId: string;
+  readonly metastoreName?: string;
+  readonly region: string;
+  readonly storageRoot?: string;
+  readonly role?: UnityCatalogRole;
+  readonly owner?: string;
 }
 
 export class UnityCatalogMetastore extends Construct {
@@ -39,26 +39,26 @@ export class UnityCatalogMetastore extends Construct {
 
     const { provider, region, owner } = config;
     const databricksAccountId =
-      config.databricksAccountId ?? provider.accountId ?? "";
+      config.databricksAccountId ?? provider.accountId ?? '';
     const metastoreName =
-      config.metastoreName ?? this.node.path.replace(/\//g, "-").toLowerCase();
+      config.metastoreName ?? this.node.path.replace(/\//g, '-').toLowerCase();
 
     let storageRoot = config.storageRoot;
     if (storageRoot === undefined) {
       // Create new bucket
-      const bucket = new s3Bucket.S3Bucket(this, "bucket", {
+      const bucket = new s3Bucket.S3Bucket(this, 'bucket', {
         region,
         bucket: metastoreName,
         forceDestroy: true,
       });
       // Set CORS configuration
-      new s3BucketCorsConfiguration.S3BucketCorsConfiguration(bucket, "cors", {
+      new s3BucketCorsConfiguration.S3BucketCorsConfiguration(bucket, 'cors', {
         bucket: bucket.id,
         corsRule: [
           {
             allowedHeaders: [],
-            allowedMethods: ["PUT"],
-            allowedOrigins: ["https://*.databricks.com"],
+            allowedMethods: ['PUT'],
+            allowedOrigins: ['https://*.databricks.com'],
             exposeHeaders: [],
             maxAgeSeconds: 1800,
           },
@@ -68,7 +68,7 @@ export class UnityCatalogMetastore extends Construct {
       storageRoot = `s3://${bucket.id}`;
     }
 
-    const metastore = new RawMetastore(this, "resource", {
+    const metastore = new RawMetastore(this, 'resource', {
       provider,
       name: metastoreName,
       region,
@@ -87,17 +87,17 @@ export class UnityCatalogMetastore extends Construct {
     this.cloud = metastore.cloud;
     this.region = metastore.region;
     this.storageRoot = metastore.storageRoot;
-    this.bucketName = storageRoot.split("/")[2];
+    this.bucketName = storageRoot.split('/')[2];
 
     const unityCatalogRole =
       config.role ??
-      new UnityCatalogRole(this, "unity-catalog-role", {
+      new UnityCatalogRole(this, 'unity-catalog-role', {
         externalId: databricksAccountId,
         bucketName: this.bucketName,
-        roleName: metastoreName + "-unity-catalog-role",
+        roleName: metastoreName + '-unity-catalog-role',
       });
 
-    this.grant("default-role", unityCatalogRole.roleArn, true);
+    this.grant('default-role', unityCatalogRole.roleArn, true);
   }
 
   grant(
@@ -108,8 +108,8 @@ export class UnityCatalogMetastore extends Construct {
     return new MetastoreDataAccess(this, id, {
       provider: this.provider,
       metastoreId: this.metastoreId,
-      name: this.metastoreName + "-" + id,
-      comment: this.node.path + "/" + id,
+      name: this.metastoreName + '-' + id,
+      comment: this.node.path + '/' + id,
       awsIamRole: { roleArn },
       isDefault,
       forceDestroy: true,
