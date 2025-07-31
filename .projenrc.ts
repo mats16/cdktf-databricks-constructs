@@ -15,19 +15,13 @@ const project = new cdktf.ConstructLibraryCdktf({
   packageName: 'cdktf-databricks-constructs',
 
   deps: [
-    //'constructs',
-    //'cdktf',
   ],
   peerDeps: [
-    //'constructs',
-    //'cdktf',
     '@cdktf/provider-aws@^21.5.0',
     '@cdktf/provider-databricks@^15.3.0',
     '@cdktf/provider-time@^11.0.0',
   ],
   devDeps: [
-    //'cdktf',
-    //'constructs',
     '@cdktf/provider-aws@^21.5.0',
     '@cdktf/provider-databricks@^15.3.0',
     '@cdktf/provider-time@^11.0.0',
@@ -40,6 +34,15 @@ const project = new cdktf.ConstructLibraryCdktf({
       tabWidth: 2,
     },
   },
+});
+
+project.addTask('format', {
+  description: 'Format the code',
+  steps: [
+    {
+      exec: 'npx prettier --write "src/**/*.ts"',
+    },
+  ],
 });
 
 project.synth();

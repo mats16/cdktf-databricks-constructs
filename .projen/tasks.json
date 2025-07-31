@@ -135,6 +135,15 @@
         }
       ]
     },
+    "format": {
+      "name": "format",
+      "description": "Format the code",
+      "steps": [
+        {
+          "exec": "npx prettier --write \"src/**/*.ts\""
+        }
+      ]
+    },
     "install": {
       "name": "install",
       "description": "Install project dependencies and update lockfile (non-frozen)",
