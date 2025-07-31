@@ -1,7 +1,4 @@
-import {
-  s3Bucket,
-  s3BucketPolicy,
-} from '@cdktf/provider-aws';
+import { s3Bucket, s3BucketPolicy } from '@cdktf/provider-aws';
 import { DataDatabricksAwsBucketPolicy } from '@cdktf/provider-databricks/lib/data-databricks-aws-bucket-policy';
 import { MwsStorageConfigurations } from '@cdktf/provider-databricks/lib/mws-storage-configurations';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
