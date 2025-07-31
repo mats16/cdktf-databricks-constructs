@@ -21,6 +21,13 @@ const project = new cdktf.ConstructLibraryCdktf({
   packageName: 'cdktf-databricks-constructs',
 });
 
-project.package.setScript('format', 'npx prettier --write "src/**/*.ts"');
+project.addTask('format', {
+  description: 'Format the code',
+  steps: [
+    {
+      exec: 'npx prettier --write "src/**/*.ts"',
+    },
+  ],
+});
 
 project.synth();
