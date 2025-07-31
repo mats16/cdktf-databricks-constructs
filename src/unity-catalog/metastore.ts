@@ -1,5 +1,5 @@
 import { s3Bucket, s3BucketCorsConfiguration } from '@cdktf/provider-aws';
-import { Metastore as RawMetastore } from '@cdktf/provider-databricks/lib/metastore';
+import { Metastore as TfMetastore } from '@cdktf/provider-databricks/lib/metastore';
 import { MetastoreDataAccess } from '@cdktf/provider-databricks/lib/metastore-data-access';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
 import { Construct } from 'constructs';
@@ -53,7 +53,7 @@ export class UnityCatalogMetastore extends Construct {
       storageRoot = `s3://${bucket.id}`;
     }
 
-    const metastore = new RawMetastore(this, 'resource', {
+    const metastore = new TfMetastore(this, 'resource', {
       provider,
       name: metastoreName,
       region,
