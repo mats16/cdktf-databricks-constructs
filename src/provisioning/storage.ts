@@ -42,7 +42,8 @@ export class Storage extends Construct {
     }
 
     const { provider, region } = config;
-    const accountId = config.databricksAccountId ?? provider.accountId ?? "";
+    const databricksAccountId =
+      config.databricksAccountId ?? provider.accountId ?? "";
     let bucketName = config.bucketName;
     const storageConfigurationName =
       config.storageConfigurationName ?? this.node.path;
@@ -60,7 +61,7 @@ export class Storage extends Construct {
 
     const storage = new MwsStorageConfigurations(this, "resource", {
       provider,
-      accountId,
+      accountId: databricksAccountId,
       storageConfigurationName,
       bucketName,
     });

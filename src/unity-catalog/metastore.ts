@@ -38,7 +38,8 @@ export class UnityCatalogMetastore extends Construct {
     super(scope, id);
 
     const { provider, region, owner } = config;
-    const accountId = config.databricksAccountId ?? provider.accountId ?? "";
+    const databricksAccountId =
+      config.databricksAccountId ?? provider.accountId ?? "";
     const metastoreName =
       config.metastoreName ?? this.node.path.replace(/\//g, "-").toLowerCase();
 
@@ -91,7 +92,7 @@ export class UnityCatalogMetastore extends Construct {
     const unityCatalogRole =
       config.role ??
       new UnityCatalogRole(this, "unity-catalog-role", {
-        externalId: accountId,
+        externalId: databricksAccountId,
         bucketName: this.bucketName,
         roleName: metastoreName + "-unity-catalog-role",
       });
