@@ -20,4 +20,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   ],
   packageName: 'cdktf-databricks-constructs',
 });
+
+project.package.setScript('format', 'npx prettier --write "src/**/*.ts"');
+
 project.synth();
