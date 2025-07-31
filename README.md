@@ -38,18 +38,6 @@ yarn add cdktf-databricks-constructs
 pip install cdktf-databricks-constructs
 ```
 
-### (TBD) Java
-
-Add to your `pom.xml`:
-
-```xml
-<dependency>
-    <groupId>io.github.mats-kazuki</groupId>
-    <artifactId>cdktf-databricks-constructs</artifactId>
-    <version>LATEST</version>
-</dependency>
-```
-
 ## Quick Start
 
 ### Deployment with CDKTF
@@ -101,32 +89,18 @@ class MyStack extends TerraformStack {
     super(scope, id);
 
     // Configure providers
-    new AwsProvider(this, 'aws', { region: 'us-east-1' });
-    new DatabricksProvider(this, 'databricks', {
-      host: 'https://accounts.cloud.databricks.com',
-      accountId: process.env.DATABRICKS_ACCOUNT_ID,
-      username: process.env.DATABRICKS_ACCOUNT_USER,
-      password: process.env.DATABRICKS_ACCOUNT_PASSWORD,
+    new AwsProvider(this, "aws", {
+      profile: process.env.AWS_PROFILE,
+    });
+    const databricksProvider = new DatabricksProvider(this, "databricks", {
+      alias: "mws",
+      profile: process.env.DATABRICKS_PROFILE,
     });
 
-    // Create workspace with dependencies
-    const creds = new Credentials(this, 'creds', {
-      accountId: process.env.DATABRICKS_ACCOUNT_ID!,
-      awsAccountId: process.env.AWS_ACCOUNT_ID!,
-      credentialsName: 'my-credentials',
-    });
-
-    const storage = new Storage(this, 'storage', {
-      accountId: process.env.DATABRICKS_ACCOUNT_ID!,
-      bucketName: 'my-databricks-root-storage',
-    });
-
-    new Workspace(this, 'workspace', {
-      accountId: process.env.DATABRICKS_ACCOUNT_ID!,
-      workspaceName: 'my-workspace',
-      region: 'us-east-1',
-      credentialsId: creds.credentialsId,
-      storageConfigurationId: storage.storageConfigurationId,
+    new Workspace(this, "workspace", {
+      provider: databricksProvider,
+      databricksAccountId: process.env.DATABRICKS_ACCOUNT_ID!,
+      region: 'ap-northeast-1',
     });
   }
 }
@@ -173,13 +147,13 @@ git clone https://github.com/mats.kazuki/cdktf-databricks-constructs.git
 cd cdktf-databricks-constructs
 
 # Install dependencies
-npm install
+npx projen
 
 # Build the project
-npm run build
+npx projen build
 
 # Run tests
-npm run test
+npx projen test
 ```
 
 ### Project Structure
@@ -233,10 +207,10 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Support
 
-- 📖 [Documentation](https://github.com/mats.kazuki/cdktf-databricks-constructs)
-- 🐛 [Issue Tracker](https://github.com/mats.kazuki/cdktf-databricks-constructs/issues)
-- 💬 [Discussions](https://github.com/mats.kazuki/cdktf-databricks-constructs/discussions)
+- 📖 [Documentation](https://github.com/mats16/cdktf-databricks-constructs)
+- 🐛 [Issue Tracker](https://github.com/mats16/cdktf-databricks-constructs/issues)
+- 💬 [Discussions](https://github.com/mats16/cdktf-databricks-constructs/discussions)
 
 ---
 
-Made with ❤️ by [mats](https://github.com/mats.kazuki)
+Made with ❤️ by [mats](https://github.com/mats16)
