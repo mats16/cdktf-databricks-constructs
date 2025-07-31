@@ -6,6 +6,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.8.0',
   name: 'cdktf-databricks-constructs',
+  description: 'L2 constructs for Databricks',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/mats.kazuki/cdktf-databricks-constructs.git',
 
@@ -14,10 +15,9 @@ const project = new cdktf.ConstructLibraryCdktf({
     '@cdktf/provider-databricks@^15.3.0',
     '@cdktf/provider-time@^11.0.0',
   ],
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: [
     'prettier',
   ],
-  // packageName: undefined,  /* The "name" in package.json. */
+  packageName: 'cdktf-databricks-constructs',
 });
 project.synth();

@@ -1,5 +1,6 @@
 {
   "name": "cdktf-databricks-constructs",
+  "description": "L2 constructs for Databricks",
   "repository": {
     "type": "git",
     "url": "https://github.com/mats.kazuki/cdktf-databricks-constructs.git"
