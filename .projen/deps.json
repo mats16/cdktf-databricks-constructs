@@ -1,8 +1,18 @@
 {
   "dependencies": [
     {
-      "name": "@stylistic/eslint-plugin",
-      "version": "^2",
+      "name": "@cdktf/provider-aws",
+      "version": "^21.5.0",
+      "type": "build"
+    },
+    {
+      "name": "@cdktf/provider-databricks",
+      "version": "^15.3.0",
+      "type": "build"
+    },
+    {
+      "name": "@cdktf/provider-time",
+      "version": "^11.0.0",
       "type": "build"
     },
     {
@@ -34,11 +44,19 @@
       "type": "build"
     },
     {
+      "name": "eslint-config-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint-import-resolver-typescript",
       "type": "build"
     },
     {
       "name": "eslint-plugin-import",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-prettier",
       "type": "build"
     },
     {
@@ -79,6 +97,10 @@
       "type": "build"
     },
     {
+      "name": "prettier",
+      "type": "build"
+    },
+    {
       "name": "projen",
       "type": "build"
     },
@@ -95,13 +117,28 @@
       "type": "build"
     },
     {
+      "name": "@cdktf/provider-aws",
+      "version": "^21.5.0",
+      "type": "peer"
+    },
+    {
+      "name": "@cdktf/provider-databricks",
+      "version": "^15.3.0",
+      "type": "peer"
+    },
+    {
+      "name": "@cdktf/provider-time",
+      "version": "^11.0.0",
+      "type": "peer"
+    },
+    {
       "name": "cdktf",
-      "version": "^0.13.0",
+      "version": "^0.21.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.3.0",
+      "version": "^10.4.2",
       "type": "peer"
     }
   ],
