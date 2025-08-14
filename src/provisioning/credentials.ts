@@ -5,6 +5,7 @@ import { MwsCredentials } from '@cdktf/provider-databricks/lib/mws-credentials';
 import { DatabricksProvider } from '@cdktf/provider-databricks/lib/provider';
 import { TimeProvider } from '@cdktf/provider-time/lib/provider';
 import { Sleep } from '@cdktf/provider-time/lib/sleep';
+import { TerraformStack } from 'cdktf';
 import { Construct } from 'constructs';
 
 type PolicyType = 'managed' | 'customer' | 'restricted';
@@ -16,14 +17,39 @@ export interface CredentialsConfig {
   readonly policyType?: PolicyType;
 }
 
-export class Credentials extends Construct {
+export interface ICredentials {
+  /**
+   * The identity of the credentials.
+   * @attribute
+   */
+  readonly credentialsId: string;
+}
+
+export class Credentials extends Construct implements ICredentials {
+  /**
+   * Import existing Databricks Credentials
+   */
+  public static fromCredentialsId(
+    scope: Construct,
+    id: string,
+    credentialsId: string,
+  ): ICredentials {
+    const stack = TerraformStack.of(scope);
+
+    class Import extends Construct implements ICredentials {
+      public readonly credentialsId = credentialsId;
+    }
+
+    return new Import(stack, id);
+  }
+
   public readonly databricksAccountId: string;
   public readonly credentialsId: string;
   public readonly credentialsName: string;
   public readonly iamRole: CrossAccountRole;
 
   /**
-   * Databricks Credentials Configuration
+   * Databricks Credentials Configuration with AWS Cross Account Role
    */
   constructor(scope: Construct, id: string, config: CredentialsConfig) {
     super(scope, id);

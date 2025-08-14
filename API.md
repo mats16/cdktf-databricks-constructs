@@ -4,6 +4,8 @@
 
 ### Credentials <a name="Credentials" id="cdktf-databricks-constructs.Credentials"></a>
 
+- *Implements:* <a href="#cdktf-databricks-constructs.ICredentials">ICredentials</a>
+
 #### Initializers <a name="Initializers" id="cdktf-databricks-constructs.Credentials.Initializer"></a>
 
 ```typescript
@@ -59,6 +61,7 @@ Returns a string representation of this construct.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#cdktf-databricks-constructs.Credentials.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#cdktf-databricks-constructs.Credentials.fromCredentialsId">fromCredentialsId</a></code> | Import existing Databricks Credentials. |
 
 ---
 
@@ -94,12 +97,40 @@ Any object.
 
 ---
 
+##### `fromCredentialsId` <a name="fromCredentialsId" id="cdktf-databricks-constructs.Credentials.fromCredentialsId"></a>
+
+```typescript
+import { Credentials } from 'cdktf-databricks-constructs'
+
+Credentials.fromCredentialsId(scope: Construct, id: string, credentialsId: string)
+```
+
+Import existing Databricks Credentials.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="cdktf-databricks-constructs.Credentials.fromCredentialsId.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="cdktf-databricks-constructs.Credentials.fromCredentialsId.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `credentialsId`<sup>Required</sup> <a name="credentialsId" id="cdktf-databricks-constructs.Credentials.fromCredentialsId.parameter.credentialsId"></a>
+
+- *Type:* string
+
+---
+
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#cdktf-databricks-constructs.Credentials.property.credentialsId">credentialsId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-databricks-constructs.Credentials.property.credentialsId">credentialsId</a></code> | <code>string</code> | The identity of the credentials. |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.credentialsName">credentialsName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.databricksAccountId">databricksAccountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdktf-databricks-constructs.Credentials.property.iamRole">iamRole</a></code> | <code><a href="#cdktf-databricks-constructs.CrossAccountRole">CrossAccountRole</a></code> | *No description.* |
@@ -125,6 +156,8 @@ public readonly credentialsId: string;
 ```
 
 - *Type:* string
+
+The identity of the credentials.
 
 ---
 
@@ -5060,4 +5093,30 @@ public readonly workspaceUrl: string;
 ---
 
 
+## Protocols <a name="Protocols" id="Protocols"></a>
+
+### ICredentials <a name="ICredentials" id="cdktf-databricks-constructs.ICredentials"></a>
+
+- *Implemented By:* <a href="#cdktf-databricks-constructs.Credentials">Credentials</a>, <a href="#cdktf-databricks-constructs.ICredentials">ICredentials</a>
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdktf-databricks-constructs.ICredentials.property.credentialsId">credentialsId</a></code> | <code>string</code> | The identity of the credentials. |
+
+---
+
+##### `credentialsId`<sup>Required</sup> <a name="credentialsId" id="cdktf-databricks-constructs.ICredentials.property.credentialsId"></a>
+
+```typescript
+public readonly credentialsId: string;
+```
+
+- *Type:* string
+
+The identity of the credentials.
+
+---
 
